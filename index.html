@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PT. Petergraph</title>
+    <title>Petergraph</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -74,8 +74,9 @@
                   <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/">
-                  <img src="assets/images/logo/logo-img.png" alt="ApecsaOS">
+                  <img src="assets/images/logo/logo-img.png" alt="Petergraph">
                 </a>
+                <span class="navbar-brand-text" style="display: inline-block; font-size: 24px; font-weight: bold; background: linear-gradient(45deg, #F17127, #FF4081); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-left: 10px; line-height: 50px; vertical-align: middle;">Petergraph</span>
               </div>
               <div class="collapse navbar-collapse" id="navbar-apecsaos">
                 <ul class="nav navbar-nav navbar-center">
@@ -149,7 +150,7 @@
             </div>
             <div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
               <div class="hero-image">
-                <img src="assets/images/img-gunung.webp" alt="Hero Image" class="img-responsive">
+                <img id="heroSlider" src="assets/images/slider/slider_1.png" alt="Hero Image" class="img-responsive fade">
               </div>
             </div>
           </div>
@@ -205,9 +206,27 @@
           background-color: #F17127;
           color: white;
         }
+        .hero-image {
+          width: 100%;
+          height: 400px; /* <<< SET TINGGI FIXED */
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
         .hero-image img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover; /* <<< BIKIN GAMBAR PAS */
           border-radius: 10px;
           box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+          transition: opacity 1s ease-in-out;
+        }
+        .fade {
+          opacity: 1;
+        }
+        .fade-out {
+          opacity: 0;
         }
         @media (max-width: 768px) {
           .hero-section {
@@ -222,8 +241,41 @@
           .hero-buttons {
             flex-direction: column;
           }
+          .hero-image {
+            height: 250px; /* <<< responsif di HP */
+          }
         }
       </style>
+      
+
+      <script>
+        const images = [
+          'assets/images/slider/slider_1.png',
+          'assets/images/slider/slider_2.png',
+          'assets/images/slider/slider_3.png'
+        ];
+
+        let currentImage = 0;
+        const heroSlider = document.getElementById('heroSlider');
+
+        function changeImage() {
+          // Mulai fade out
+          heroSlider.classList.add('fade-out');
+
+          setTimeout(() => {
+            // Setelah fade out selesai, ganti gambar
+            currentImage = (currentImage + 1) % images.length;
+            heroSlider.src = images[currentImage];
+
+            // Fade in gambar baru
+            heroSlider.classList.remove('fade-out');
+          }, 1000); // Sesuai durasi transition CSS
+        }
+
+        setInterval(changeImage, 5000); // Ganti gambar tiap 4 detik
+      </script>
+
+      
 
       <!-- START SCOPE SUB HEADER -->
       <section id="tentang-kami" class="sub-header parallax-apecsa bg-service">
@@ -1958,7 +2010,7 @@
           <div class="col-md-4">
             <a class="image-portfolio" data-toggle="modal" data-target="#modal-portfolio-1">
               <div class="box-image">
-                <img src="assets/images/portfolio/yuriardila/kucing-1.jpg" alt="Portfolio Yuri Ardila">
+                <img src="assets/images/portfolio/yuriardila/o-FASHION-facebook.jpg" alt="Portfolio Yuri Ardila">
               </div>
             </a>
             <div class="modal modal-fullscreen fade" id="modal-portfolio-1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -2106,7 +2158,7 @@
           <div class="col-md-4">
             <a class="image-portfolio" data-toggle="modal" data-target="#modal-portfolio-2">
               <div class="box-image">
-                <img src="assets/images/portfolio/farizan/kucing-1.jpg" alt="Portfolio Farizan Firdaus">
+                <img src="assets/images/portfolio/farizan/images.jpeg" alt="Portfolio Farizan Firdaus">
               </div>
             </a>
             <div class="modal modal-fullscreen fade" id="modal-portfolio-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -2128,10 +2180,10 @@
                         <div id="carousel-portfolio-2" class="carousel slide" data-ride="carousel">
                           <div class="carousel-inner" role="listbox">
                             <div class="item active">
-                              <img src="assets/images/portfolio/farizan/kucing-1.jpg" alt="Fotografi Produk">
+                              <img src="assets/images/portfolio/andriat/foto-1.png" alt="Fotografi Produk">
                             </div>
                             <div class="item">
-                              <img src="assets/images/portfolio/farizan/kucing-3.jpg" alt="Fotografi Komersial">
+                              <img src="assets/images/portfolio/andriat/" alt="Fotografi Komersial">
                             </div>
                             <div class="item">
                               <img src="assets/images/portfolio/farizan/kucing-5.jpg" alt="Fotografi Iklan">
@@ -2254,7 +2306,7 @@
           <div class="col-md-4">
             <a class="image-portfolio" data-toggle="modal" data-target="#modal-portfolio-3">
               <div class="box-image">
-                <img src="assets/images/portfolio/andriat/kucing-1.jpg" alt="Portfolio Andriat Ratyanto">
+                <img src="assets/images/portfolio/andriat/foto-1.png" alt="Portfolio Andriat Ratyanto">
               </div>
             </a>
             <div class="modal modal-fullscreen fade" id="modal-portfolio-3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -2276,10 +2328,10 @@
                         <div id="carousel-portfolio-3" class="carousel slide" data-ride="carousel">
                           <div class="carousel-inner" role="listbox">
                             <div class="item active">
-                              <img src="assets/images/portfolio/andriat/kucing-1.jpg" alt="Fotografi Arsitektur">
+                              <img src="assets/images/portfolio/andriat/foto-1.png" alt="Fotografi Arsitektur">
                             </div>
                             <div class="item">
-                              <img src="assets/images/portfolio/andriat/kucing-3.jpg" alt="Fotografi Interior">
+                              <img src="assets/images/portfolio/farizan/images.jpeg" alt="Fotografi Interior">
                             </div>
                             <div class="item">
                               <img src="assets/images/portfolio/andriat/kucing-5.jpg" alt="Fotografi Properti">
@@ -2698,7 +2750,7 @@
           <div class="col-md-4">
             <a class="image-portfolio" data-toggle="modal" data-target="#modal-portfolio-6">
               <div class="box-image">
-                <img src="assets/images/portfolio/anggi/kucing-1.jpg" alt="Portfolio Anggi Pradityo">
+                <img src="assets/images/portfolio/anggi/satwa_1.png" alt="Portfolio Anggi Pradityo">
               </div>
             </a>
             <div class="modal modal-fullscreen fade" id="modal-portfolio-6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -2720,13 +2772,19 @@
                         <div id="carousel-portfolio-6" class="carousel slide" data-ride="carousel">
                           <div class="carousel-inner" role="listbox">
                             <div class="item active">
-                              <img src="assets/images/portfolio/anggi/kucing-1.jpg" alt="Fotografi Satwa Liar">
+                              <img src="assets/images/portfolio/anggi/satwa_1.png" alt="Fotografi Satwa Liar">
                             </div>
                             <div class="item">
-                              <img src="assets/images/portfolio/anggi/kucing-3.jpg" alt="Fotografi Alam">
+                              <img src="assets/images/portfolio/anggi/satwa_2.png" alt="Fotografi Satwa Liar">
                             </div>
                             <div class="item">
-                              <img src="assets/images/portfolio/anggi/kucing-5.jpg" alt="Fotografi Konservasi">
+                              <img src="assets/images/portfolio/anggi/satwa_3.png" alt="Fotografi Satwa Liar">
+                            </div>
+                            <div class="item">
+                              <img src="assets/images/portfolio/anggi/satwa_4.png" alt="Fotografi Satwa Liar">
+                            </div>
+                            <div class="item">
+                              <img src="assets/images/portfolio/anggi/satwa_5.png" alt="Fotografi Satwa Liar">
                             </div>
                           </div>
                           <a class="left carousel-control" href="#carousel-portfolio-6" role="button" data-slide="prev">
@@ -2890,8 +2948,7 @@
                 </a>
               </div>
               <div class="corpyright">
-                <span>&copy; Corpytight 2016 PT. Apecsa Optima Solusi</span><br>
-                <span>Anything Is Possible</span>
+                <span>&copy; 2024 Petergraph. All rights reserved.</span>
               </div>
             </div>
           </div>
